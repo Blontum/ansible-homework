@@ -49,7 +49,7 @@ check if ansible is install:
     sudo -i # switching to root user
     ssh-keygen -t rsa # keypay generation for rsa kaypay (private and public)
                                    # the kay is saved in (/root/.ssh/id_rsa): .ssh is a hidden file
-enter and enter again. private saved at:
+ Enter and Enter again. private saved at:
      /root/.ssh/id_rsa # private key
      /root/.ssh/id_rsa.pub # public key
 
@@ -57,27 +57,25 @@ verify if those two keys are there:
 
 cd /root/.ssh/
 ls -l
-           # NB, copy the public key to the Node and keep the private key there.
+ # NB, copy the public key to the Node and keep the private key there.
 
-open a new tab and ssh into the Node:
+Open a new tab and ssh into the Node:
+Change the name:
+    sudo hostnamectl set-hostname: ansible ;client1,client2,client3 etc  #command to set a new cliet name for other servers
 
-change the name:
+    exit and log back into the server.
 
-sudo hostnamectl set-hostname ansible-Node1: ,Node2, Node3, etc #command to set a new cliet name for other servers
-
-exit and log back into the server.
-
-# we have to copy the public key from the controller to the other savers.
+# we have to copy the public key from the controller to the other servers.
     cat the file and then copy the key to the node
-    cat id_rsa.pub # after you cat, the copy and paste into the other savers
-    go to the node, 
-    sudo -i # copy as a root user: very important
+    cat id_rsa.pub # after you cat, the copy and paste into the other servers
+ GO CLIENTS:
+    sudo -i                  # copy as a root user: very important
     cd .ssh
     ll
 
 # you should see a private authorise key in there. 
 
-vi authorized_key: go in and paste the public key you copied
+    vi authorized_key #go in and paste the public key you copied
 
 go all the way to the end of the line : function Fn forward key
     est 
@@ -94,24 +92,22 @@ ansible --version:
 #you find three files, ansible.cfg, hosts, roles
 
 # you build the invery of the Nodes in ansible host
-    cat host # it will show you what to do
-
-    vi host # edit (webserver)and put ubuntu-nodes
-        go to the nodes and copy their private ips and coe and paste beneath "ubuntu-node"
+    cat host       # it will show you what to do
+    vi host        # edit (webserver)and put ubuntu-nodes
+# go to the nodes and copy their private ips and coe and paste beneath "ubuntu-node"
     esc:qw! enter
 
 # test connectivity
-    ssh root@ip enter for node1
-    ssh toot@ip enter for node2 ect
+    ssh root@ip enter for client1
+    ssh toot@ip enter for client2 etc
 
-# test connectivity between twoservs
+# test connectivity between two servers
 
-ansible -m ping all : it will send a ping across all the nodes from the controller
+    ansible -m ping all  # it will send a ping across all the clients from the controller
 
     you should have a success. with responds pong
 
-# if you want to tsrget a specifix server: 
-    ansible -m ping ubuntu-nodes
-
+# if you want to target a specific server: 
+    ansible -m ping ubuntu-client  # for example
 
 
