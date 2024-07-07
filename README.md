@@ -25,7 +25,7 @@ sudo apt install ansible
 ssh in to the controller:
 
     ifconfig : help you see the ip address
-    hostnamectl: shows what is fouynd in the saver
+    hostnamectl: shows what is found in the server
     sudo hostnamectl set-hostname ansible-controller: rename the controller
     hostnamectl: for the second time # exit and ssh into it again. you will see the new name
 
